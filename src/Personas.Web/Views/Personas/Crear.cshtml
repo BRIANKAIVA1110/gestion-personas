@@ -1,0 +1,25 @@
+﻿@using Personas.Web.Models.ViewModels.Personas;
+@model PersonaVM
+
+
+<h3>Agregar Persona</h3>
+<div>
+    <form asp-action="crear" asp-controller="personas" method="post">
+        <label asp-for="Nombre"></label>
+        <input class="form-control-sm" asp-for="Nombre" />
+        <span asp-validation-for="Nombre" class="text-danger" ></span>
+        <br />
+        <label asp-for="Apellido"></label>
+        <input class="form-control-sm" asp-for="Apellido" />
+        <span asp-validation-for="Apellido" class="text-danger"></span>
+        <br />
+        <label asp-for="Edad"></label>
+        <input class="form-control-sm" asp-for="Edad" />
+        <span asp-validation-for="Edad" class="text-danger"></span>
+        <br />
+        <input class="btn-success form-control-sm" type="submit" value="Agregar"/>
+        <input class="btn-danger form-control-sm" type="submit" value="Cancelar" asp-action="index" asp-controller="personas"/>
+    </form>
+</div>
+
+

@@ -1,0 +1,18 @@
+﻿@using Personas.Web.Models.ViewModels.Personas
+@model PersonaVM
+
+<h1>Personas > Detalles</h1>
+<div>
+    <b><label asp-for="Nombre" class="control-label"></label>:</b>
+    <span>@Model.Nombre</span>
+    <br />
+    <b><label asp-for="Apellido" class="control-label"></label>:</b>
+    <span>@Model.Apellido</span>
+    <br />
+    <b><label asp-for="Edad" class="control-label"></label>:</b>
+    <span>@Model.Edad</span>
+
+
+    <hr />
+    <a asp-action="index" asp-controller="personas" class="btn btn-dark form-control-sm ">Volver</a>
+</div>

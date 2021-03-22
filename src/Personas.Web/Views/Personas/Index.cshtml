@@ -1,0 +1,64 @@
+﻿@using Personas.Web.Models.ViewModels.Personas
+@model List<PersonaVM>
+
+
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row justify-content-between">
+            <div class="col-lg-7 col-md-7 col-sm-12">
+                <ul class="nav ">
+                    <li class="nav-item ">
+                        <a class="nav-link  btn-success" asp-area="" asp-controller="personas" asp-action="crear" ><i class="fa fa-plus" aria-hidden="true"></i>Agregar</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 d-lg-inline-flex d-md-inline-flex justify-content-end ">
+                <form class="form-inline" asp-action="buscar" asp-controller="personas" method="get">
+                    @* name=[nameParameter from method] --> Personas/buscar?p_query= [valueInput]   *@
+                    <input class="form-control form-control-sm" placeholder="Buscar..." name="p_query">
+                    <button class="form-control form-control-sm btn btn-info " type="submit"><i class="fa fa-search" aria-hidden="true"></i>Buscar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <h6 class="m-2">Registros: </h6>
+        <div class="container-fluid overflow-auto " style="max-height:300px;">
+            <table class="table table-light table-hover  border-dark table-sm small">
+                <thead class=" thead-dark">
+                    <tr>
+                        <th>Acciones</th>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    @{
+                        if (Model != null)
+                        {
+                            int contRegistros = 1;
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>
+                                        <a asp-action="eliminar" asp-controller="personas" asp-route-id=@item.Id class="text-decoration-none text-danger"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></a>
+                                        <a asp-action="detalles" asp-controller="personas" asp-route-id=@item.Id class="text-decoration-none text-dark"><i class="fa fa-info fa-2x" aria-hidden="true"></i></a>
+                                    </th>
+                                    <th>@contRegistros</th>
+                                    <td>@item.Nombre</td>
+                                    <td>@item.Apellido</td>
+                                    <td>@item.Edad</td>
+                                </tr>
+
+                                contRegistros = contRegistros + 1;
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
